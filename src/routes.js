@@ -1,15 +1,17 @@
-import index          from './pages/index'
-import me             from './pages/me'
-import meSetting      from './pages/me-setting'
-import meInfo         from './pages/me-info'
-import login          from './pages/login'
-import pwd            from './pages/pwd'
-import incomeReport   from './pages/income-report'
-import incomeRebate   from './pages/income-rebate'
-import about          from './pages/about'
-import help           from './pages/help'
-import pageNotFound   from './pages/404'
-import xiaoUList      from './pages/xiaou-list'
+import index            from './pages/index'
+import me               from './pages/me'
+import meSetting        from './pages/me-setting'
+import meInfo           from './pages/me-info'
+import login            from './pages/login'
+import pwd              from './pages/pwd'
+import incomeReport     from './pages/income-report'
+import incomeRebate     from './pages/income-rebate'
+import about            from './pages/about'
+import help             from './pages/help'
+import pageNotFound     from './pages/404'
+import xiaoUList        from './pages/xiaou-list'
+import xiaoUExamine     from './pages/xiaou-examine'
+import xiaoUExpress     from './pages/xiaou-express'
 
 const routes = [
   { 
@@ -71,6 +73,16 @@ const routes = [
     path: '/xiaou',
     meta: { title: '我的小U'},
     component: xiaoUList
+  },
+  {
+    path: '/xiaou/examine',
+    meta: { title: '待审核小U列表'},
+    component: xiaoUExamine
+  },
+  {
+    path: '/xiaou/express/:code',
+    meta: { title: '物流查询'},
+    component: xiaoUExpress
   },
   {
     path: '/help',

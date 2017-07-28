@@ -655,9 +655,37 @@ const _server = {
       return response
     })
   },
+  getXiaoUExamine(page = 1, rows = 10) {
+    return _http.post('/agentInfo/nextLevelExamineList', {
+      page, rows
+    }).then((response) => {
+      !response.data && (response.data = {})
+      response.data.rows = rows
+      return response
+    })
+  },
+  getXiaoUExamineInfo(lowerShopAgentInfoId = '') {
+    return _http.post('/agentInfo/getNextLevelExamineInfo', {
+      lowerShopAgentInfoId
+    }).then((response) => {
+      !response.data && (response.data = {})
+      return response
+    })
+  },
+  examineOk(formData = {}) {
+    return _http.post('/agentInfo/nextLevelExamineInfo', formData).then((response) => {
+      !response.data && (response.data = {})
+      return response
+    })
+  },
   getXiaoUInfo(lowerUserId = '') {
     return _http.post('/agentInfo/nextLevelInfo', {
       lowerUserId
+    })
+  },
+  getXiaoUExpress(deliveryCode = '') {
+    return _http.post('/agentInfoU/deliveryExpress', {
+      deliveryCode
     })
   },
   user: {

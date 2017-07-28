@@ -160,14 +160,16 @@ router.beforeEach((to, from, next) => {
 })
 
 router.afterEach((to) => {
-  utils.setTitle(to.meta.title)
   _history.direction = ''
   storage.session.set('_history', _history)
 
-  setTimeout(()=>{
+  clearTimeout(router.afterEach.timeid)
+  router.afterEach.timeid = setTimeout(()=>{
+    utils.setTitle(to.meta.title)
+
+    utils.removeClass(document.querySelector('.l-page._active'), '_active')
     if(to.hash){
       if(/^#page-/.test(to.hash)){
-        utils.removeClass(document.querySelector('.l-page._active'), '_active')
         utils.addClass(document.querySelector(to.hash), '_active') 
       }
     }else{
